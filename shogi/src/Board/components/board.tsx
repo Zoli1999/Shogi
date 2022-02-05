@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { selectPiece } from "../../movement/compoments/movement";
+import { movePiece } from "../../movement/compoments/movement";
+import { dropPiece } from "../../movement/compoments/movement";
 import "../css/board.css";
 
 const map = [
@@ -18,12 +21,14 @@ const Board = () => {
 
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      board.push(<div className={`tile ${map[i][j]}`}></div>)
+      board.push(<div key={map[i][j]} className={`tile ${map[i][j]}`}></div>);
     }
   }
 
   return (
-    <div id="board">{board}</div>
+    <div onMouseUp={(e) => dropPiece(e)} onMouseMove={(e) => movePiece(e)} onMouseDown={e => selectPiece(e)} id="board">
+      {board}
+    </div>
   );
 }
 
