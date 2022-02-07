@@ -11,6 +11,8 @@ export const selectPiece = (e: React.MouseEvent) => {
     element.style.left = `${x}px`;
     element.style.top = `${y}px`;
     activePiece = element;
+  } else if (element.classList.contains("test")) {
+    console.log(e.target);
   }
 }
 
